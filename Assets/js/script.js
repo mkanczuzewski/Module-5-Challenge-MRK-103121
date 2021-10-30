@@ -21,36 +21,13 @@ rows.each(function(i)
         $(this).find("textarea").addClass("present");
     }
 });
-var textareathing;
-$("button").on("click", function(event) {
-    $(event.target).closest("textarea").val(textareathing);
-    console.log(textareathing)
 
+$("button").on("click", function(event) {
+  var closestRow = $(this).closest('.row');
+  var textAreaValue = closestRow.find('textarea').val();  
+  var id = closestRow.attr('id');
+  console.log(textAreaValue)
+    localStorage.setItem(id, JSON.stringify(textAreaValue));
 }
 )
 
-// $("button").click(function() {
-//     console.log("save button clicked")
-
-// }
-// )
-
-// var allSaveBtn = $("button");
-// allSaveBtn.each(function()
-// {
-//     var idvalue = $(this).attr('id');
-
-//     startBtn.onclick = function (idvalue)
-
-// }
-// )
-
-// {
-
-// press save button
-// find the row   
-// capture text in row
-// assign id   
-// save it localStorage
-
-// onload put it back in the textarea
