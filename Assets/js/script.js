@@ -1,11 +1,7 @@
 var currentDayJS = document.getElementById('currentDay');
-var textboxJS = document.getElementById('textbox')
-var hourCompare9 = document.getElementById('9')
-
 currentDayJS.innerText = $.datepicker.formatDate('MM dd, yy', new Date());
 
 var getTheHour = moment().hours();
-console.log(getTheHour);
 
 var rows = $(".row");
 rows.each(function(i) 
@@ -25,53 +21,36 @@ rows.each(function(i)
         $(this).find("textarea").addClass("present");
     }
 });
+var textareathing;
+$("button").on("click", function(event) {
+    $(event.target).closest("textarea").val(textareathing);
+    console.log(textareathing)
 
-// $('#9').
-// $("textarea").css( "background", "past")
+}
+)
 
-// input[type='text'], textarea {
-//     background-color : .past;
+// $("button").click(function() {
+//     console.log("save button clicked")
+
 // }
+// )
 
+// var allSaveBtn = $("button");
+// allSaveBtn.each(function()
+// {
+//     var idvalue = $(this).attr('id');
 
-// if (getTheHour > ) 
-// {
-// '9'.textarea.class = past
-// } 
-// else if (getTheHour < '9')
-// {
-// '9' .textarea.class = future
+//     startBtn.onclick = function (idvalue)
+
 // }
-// else
-// class = present 
+// )
 
+// {
 
+// press save button
+// find the row   
+// capture text in row
+// assign id   
+// save it localStorage
 
-// setInterval(function() {
-//     $(".card .list-group-item").each(function() {
-//       auditTask($(this));
-//     });
-//   }, 1800000);
-
-// var auditTask = function(taskEl) {
-//     // get date from task element
-//     var date = $(taskEl)
-//         .find("span")
-//         .text()
-//         .trim();
-
-//     // convert to moment object at 5:00pm
-//     var time = moment(date, "L").set("hour", 17);
-
-//     // remove any old classes from element
-//     $(taskEl).removeClass("list-group-item-warning list-group-item-danger");
-
-//     // apply new class if task is near/over due date
-//     if (moment().isAfter(time)) {
-//         $(taskEl).addClass("list-group-item-danger");
-//     } else if (Math.abs(moment().diff(time, "days")) <= 2) {
-//         $(taskEl).addClass("list-group-item-warning");
-//     }
-// };
-
-// $("#textboxJS").val()
+// onload put it back in the textarea
