@@ -1,13 +1,18 @@
 var currentDayJS = document.getElementById('currentDay');
 currentDayJS.innerText = $.datepicker.formatDate('MM dd, yy', new Date());
 
+//check current time
 var getTheHour = moment().hours();
 
+//capture all the rows on the page
 var rows = $(".row");
+
+//iterate through each row
 rows.each(function(i) 
 {
+    //Retrieve the id attribute we are on
     var idvalue = $(this).attr('id');
-
+    //match current time to id value for row; change color dependent on time
     if (getTheHour > idvalue)
     {
         $(this).find("textarea").addClass("past");
@@ -20,42 +25,25 @@ rows.each(function(i)
     {
         $(this).find("textarea").addClass("present");
     }
+        //because we know which row we are on, load textarea from storage into that idvalues row
+        $(this).find("textarea").val(JSON.parse(localStorage.getItem(idvalue)));
 });
 
+//identifiy button, specifiy event, and when that event happens do this function
 $("button").on("click", function(event) {
+    //identify closest row to the button that was clicked
     var closestRow = $(this).closest('.row');
-    var textAreaValue = closestRow.find('textarea').val();  
+    //identify the closest textarea to the row you are on
+    var textAreaValue = closestRow.find('textarea').val();
+    //  retrieve the id attribute of the row we are on
     var id = closestRow.attr('id');
-    if (textAreaValue !== null || "")
+     //if it is null or empty string, remove the content from local storage otherwise store the textarea to the local storage with that id.
+    if (textAreaValue === null || textAreaValue === "")
+    {
+        localStorage.removeItem(id);
+    }
+    else 
     {
         localStorage.setItem(id, JSON.stringify(textAreaValue));
     }
-}
-)
-
-    $("#9 .textarea").val(localStorage.getItem(9));
-    $("#10 .textarea").val(localStorage.getItem(10));
-    $("#11 .textarea").val(localStorage.getItem(11));
-    $("#12 .textarea").val(localStorage.getItem(12));
-    $("#13 .textarea").val(localStorage.getItem(13));
-    $("#14 .textarea").val(localStorage.getItem(14));
-    $("#15 .textarea").val(localStorage.getItem(15));
-    $("#16 .textarea").val(localStorage.getItem(16));
-    $("#17 .textarea").val(localStorage.getItem(17));
-//}
-
-//window.onload = function()
-//{
-//    loadTextArea();
-//}
-
-// function loadTextArea() {
-//     if(localStorage !== 'undefined')
-//     {
-//         for(var i = 9; i > 18; i++)
-//         {
-//             $("#i .textarea").val(localStorage.getItem(i))
-                  
-//         }
-//     }
-// }
+});
