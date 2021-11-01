@@ -8,10 +8,7 @@ var getTheHour = moment().hours();
 //capture all the rows on the page
 var rows = $(".row");
 
-loadData();
-
-setInterval(loadData(), 1800000);
-
+//1800000
 function loadData() {
     //iterate through each row
     rows.each(function(i) 
@@ -35,6 +32,8 @@ function loadData() {
             $(this).find("textarea").val(JSON.parse(localStorage.getItem(idvalue)));
     });
 }
+
+loadData();
 
 //identifiy button, specifiy event, and when that event happens do this function
 $("button").on("click", function(event) {
