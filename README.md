@@ -9,7 +9,7 @@ Usage: This site is for educational purposesly only.
 
 Credits: Mark Kanczuzewski
 
-<img src="./Assets/images/plannerScreenCapture.jpg" raw=true>
+<img src="Assets/images/plannerScreenCapture.jpg" raw=true>
 
 Copyright (c) [2021] [Mark Kanczuzewski]
 
